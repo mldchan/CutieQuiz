@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function TakeQuiz() {
     const [stage, setStage] = useState(1);
@@ -117,11 +118,11 @@ export default function TakeQuiz() {
                         Click the button below to check out the results! Because
                         it looks like your results are good :3
                     </p>
-                    <a href={resultURL}>
+                    <Link href={resultURL}>
                         <button className="bg-blue-600 p-2 rounded-md px-8">
                             I wanna see those results :3
                         </button>
-                    </a>
+                    </Link>
                 </motion.div>
             )}
         </main>

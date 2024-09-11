@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Home() {
     return (
@@ -6,7 +7,7 @@ export default function Home() {
             <h1 className="text-3xl font-bold">Take the Cutie Quiz now!</h1>
             <p>See if you&apos;re a cutie by taking this quiz!</p>
             <br />
-            <a href="/take">
+            <Link href="/take">
                 <motion.button
                     className="bg-blue-600 p-2 rounded-md px-8"
                     initial={{ scale: 1 }}
@@ -15,7 +16,7 @@ export default function Home() {
                 >
                     Take Quiz
                 </motion.button>
-            </a>
+            </Link>
         </main>
     );
 }
