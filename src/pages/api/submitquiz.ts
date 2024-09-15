@@ -29,5 +29,5 @@ export default async function handler(
 }
 
 function genSharecode() {
-    return Math.random().toString(36).substring(2, 7);
+    return Math.random().toString(36).substring(2, 18);
 }

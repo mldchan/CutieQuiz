@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function TakeQuiz() {
     const [stage, setStage] = useState(1);
@@ -43,16 +46,51 @@ export default function TakeQuiz() {
 
                 res.json().then((data) => {
                     setResultURL(data.url);
+
+                    if (localStorage.getItem("savedResults")) {
+                        const savedResults = JSON.parse(
+                            localStorage.getItem("savedResults")!
+                        );
+                        savedResults.push({
+                            username,
+                            sharecode: data.url.split("/").slice(-1)[0],
+                        });
+                        localStorage.setItem(
+                            "savedResults",
+                            JSON.stringify(savedResults)
+                        );
+                    } else {
+                        localStorage.setItem(
+                            "savedResults",
+                            JSON.stringify([
+                                {
+                                    username,
+                                    sharecode: data.url.split("/").slice(-1)[0],
+                                },
+                            ])
+                        );
+                    }
                 });
             } else {
                 setError("An error occurred. Please try again.");
                 setLoading(false);
+
+                res.json().then((x) => {
+                    if (x.error) {
+                        setError(x.error);
+                    }
+                });
             }
         });
     }
 
     return (
-        <main className="left-[50%] top-[50%] absolute -translate-x-1/2 -translate-y-1/2 text-center">
+        <main
+            className={
+                inter.className +
+                " left-[50%] top-[50%] absolute -translate-x-1/2 -translate-y-1/2 text-center"
+            }
+        >
             {stage == 1 && (
                 <>
                     <h1 className="text-3xl font-bold">
@@ -67,10 +105,7 @@ export default function TakeQuiz() {
                         onChange={(e) => setUsername(e.target.value)}
                     />
 
-                    <p>
-                        That&apos;s it! You can begin the Quiz by clicking the
-                        button!
-                    </p>
+                    <p>Begin the Quiz by clicking the button!</p>
 
                     <motion.button
                         className="bg-blue-600 p-2 rounded-md px-8"
