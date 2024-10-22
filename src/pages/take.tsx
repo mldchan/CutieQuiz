@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Inter } from "next/font/google";
+import Deprecation from "@/components/ui/Deprecation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -91,6 +92,7 @@ export default function TakeQuiz() {
                 " left-[50%] top-[50%] absolute -translate-x-1/2 -translate-y-1/2 text-center"
             }
         >
+            <Deprecation />
             {stage == 1 && (
                 <>
                     <h1 className="text-3xl font-bold">

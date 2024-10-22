@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { motion } from "framer-motion";
 import Feedback from "@/components/ui/Feedback";
 import Link from "next/link";
+import Deprecation from "@/components/ui/Deprecation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -57,6 +58,7 @@ export default function Result(props: { username: string; sharecode: string }) {
                 " left-[50%] top-[50%] absolute -translate-x-1/2 -translate-y-1/2 text-center"
             }
         >
+            <Deprecation />
             <h1 className="text-3xl font-bold">
                 Results for user {props.username}
             </h1>

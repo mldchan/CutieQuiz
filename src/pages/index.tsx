@@ -1,3 +1,4 @@
+import Deprecation from "@/components/ui/Deprecation";
 import { motion } from "framer-motion";
 import { Inter } from "next/font/google";
 import Link from "next/link";
@@ -28,6 +29,7 @@ export default function Home() {
                 " left-[50%] top-[50%] absolute -translate-x-1/2 -translate-y-1/2 text-center"
             }
         >
+            <Deprecation />
             <h1 className="text-3xl font-bold">Take the Cutie Quiz now!</h1>
             <p>See if you&apos;re a cutie by taking this quiz!</p>
             <br />
